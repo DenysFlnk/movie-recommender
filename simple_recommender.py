@@ -1,10 +1,9 @@
-import pandas as pd
+from data import get_metadata
 
 
 # Simple recommendation for best 20 movies based on weighted rating
 def main():
-    metadata = pd.read_csv("data/movies_metadata.csv", low_memory=False)
-
+    metadata = get_metadata()
     mean_c = metadata["vote_average"].mean()
 
     percentile_90_m = metadata["vote_count"].quantile(0.90)

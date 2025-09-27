@@ -2,11 +2,12 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import linear_kernel
 
+from data import get_metadata
+
 
 # Content based recommendation of 10 most description similar movies (using Term Frequency-Inverse Document Frequency)
 def main():
-    metadata = pd.read_csv("data/movies_metadata.csv", low_memory=False)
-
+    metadata = get_metadata()
     tfidf = TfidfVectorizer(stop_words="english")
     metadata["overview"] = metadata["overview"].fillna("")
 
